@@ -1,0 +1,14 @@
+<div>
+  <a [routerLink]="['..', 'overview']">
+    < Назад
+  </a>
+</div>
+
+<div>
+  <div>Zoom</div>
+  <button (click)="zoomIn()">+</button>
+  <button (click)="zoomOut()">-</button>
+</div>
+
+<img #img [src]="imgUrl">
+

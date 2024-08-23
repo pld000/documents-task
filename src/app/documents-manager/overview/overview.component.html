@@ -1,0 +1,9 @@
+<div class="documents-list">
+  @for (doc of documents; track doc) {
+  <div>
+  <a [routerLink]="['..', doc.number]">
+        Document - {{ doc.number }}
+  </a>
+  </div>
+  }
+</div>
