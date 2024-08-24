@@ -7,3 +7,22 @@ body {
   color: #333;
   font-family: Lato, sans-serif;
 }
+
+.close-annotation {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  color: #fff;
+  border-radius: 50%;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+
+  img {
+    height: 12px;
+    width: 12px;
+  }
+}
+
