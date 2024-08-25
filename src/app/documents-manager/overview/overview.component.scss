@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.documents-list {
+  width: 500px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.doc-list-item {
+  display: block;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background .4s;
+  background-color: #ffffff;
+  text-decoration: none;
+  color: #333;
+
+  &:hover {
+    background: bisque;
+  }
+
+  & + .doc-list-item {
+    border-top: 1px solid #ebebeb;
+  }
+}
