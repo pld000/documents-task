@@ -1,4 +1,5 @@
-<div class="close-annotation">
+<div class="close-annotation"
+     (click)="$event.stopPropagation(); $event.preventDefault(); onRemove.emit()">
   <img src="/images/icon-close.svg" alt="">
 </div>
 <ng-content></ng-content>

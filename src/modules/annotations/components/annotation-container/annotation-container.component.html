@@ -1,5 +1,23 @@
 @for (item of annotations; track item) {
-<annotation-text>
-  item.data
+@switch (item.type) {
+@case(TYPES.TEXT)
+{
+<annotation-text
+[style]="'top: ' + item.offsetTop + 'px;' + 'left: ' + item.offsetLeft + 'px'"
+(onUpdate)="updateAnnotation(item, $event)"
+(onRemove)="removeAnnotation(item?.id)">
+{{item.data}}
 </annotation-text>
 }
+
+@case(TYPES.IMAGE)
+{
+<annotation-image
+[style]="'top: ' + item.offsetTop + 'px;' + 'left: ' + item.offsetLeft + 'px'"
+[image]="item.data"
+(onUpdate)="updateAnnotation(item, $event)"
+(onRemove)="removeAnnotation(item?.id)"></annotation-image>
+}
+}}
+
+<ng-content></ng-content>

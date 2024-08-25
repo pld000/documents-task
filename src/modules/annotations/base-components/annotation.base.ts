@@ -1,12 +1,17 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Output } from '@angular/core';
 
 @Directive()
 export class AnnotationBase {
+  @Output() onUpdate = new EventEmitter<{ offsetTop: number; offsetLeft: number }>();
+  @Output() onRemove = new EventEmitter<void>();
+
   constructor(protected _elRef: ElementRef) {
   }
 
   public activateDragAndDrop() {
     const element = this._elRef.nativeElement;
+    let offsetTop = 0;
+    let offsetLeft = 0;
 
     element.addEventListener('mousedown', (evt: MouseEvent) => {
       evt.preventDefault();
@@ -23,13 +28,18 @@ export class AnnotationBase {
         xStart = evtMove.clientX;
         yStart = evtMove.clientY;
 
-        element.style.top = (element.offsetTop - yNew) + 'px';
-        element.style.left = (element.offsetLeft - xNew) + 'px';
+        offsetTop = element.offsetTop - yNew;
+        offsetLeft = element.offsetLeft - xNew;
+
+        element.style.top = offsetTop + 'px';
+        element.style.left = offsetLeft + 'px';
       };
 
       const onMouseUp = () => {
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
+
+        this.onUpdate.emit({ offsetTop, offsetLeft });
       };
 
 

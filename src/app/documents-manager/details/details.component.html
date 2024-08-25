@@ -4,15 +4,24 @@
   </a>
 </div>
 
-<annotation-text>
-  this is some test for someasdfsdaf
-</annotation-text>
-
 <div>
   <div>Zoom</div>
   <button (click)="zoomIn()">+</button>
   <button (click)="zoomOut()">-</button>
 </div>
 
-<img #img [src]="imgUrl">
+<div>
+  <input type="text" (keydown.enter)="addTextAnnotation($event)">
+</div>
+
+<div>
+  <input type="file" (change)="addImageAnnotation($event)">
+</div>
+
+<annotation-container
+  [annotations]="annotations"
+  (onUpdateAnnotation)="updateAnnotation($event)"
+  (onRemoveAnnotation)="removeAnnotation($event)">
+  <img #img [src]="imgUrl">
+</annotation-container>
 
