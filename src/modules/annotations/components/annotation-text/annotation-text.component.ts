@@ -8,7 +8,6 @@ import { AnnotationBase } from '../../base-components/annotation.base';
 })
 export class AnnotationTextComponent extends AnnotationBase implements OnInit {
 
-
   ngOnInit() {
     this.activateDragAndDrop();
   }

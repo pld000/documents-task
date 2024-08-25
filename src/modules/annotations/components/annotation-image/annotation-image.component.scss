@@ -1,7 +1,11 @@
 :host {
-  display: block;
-  height: 200px;
-  width: 200px;
+  position: absolute;
+  cursor: grab;
+  max-height: 200px;
+  max-width: 200px;
+  background: rgba(255, 255, 0, .6);
+  padding: 5px;
+  border-radius: 3px;
 }
 
 img {

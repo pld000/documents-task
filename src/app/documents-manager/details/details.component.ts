@@ -53,23 +53,12 @@ export class DetailsComponent implements OnInit {
     this._initAnnotation();
   }
 
-  public addImageAnnotation(event: any) {
-    const item = {
-      type: ANNOTATION_TYPES.IMAGE,
-      data: null,
-      offsetTop: 500, offsetLeft: 500
-    };
+  public async addImageAnnotation(event: any) {
     const file = event.target.files[0];
-    const reader = new FileReader();
 
-    reader.readAsDataURL(file);
-
-    reader.onload = () => this._annotationsStore
-      .addAnnotation(this.documentId, { ...item, data: reader.result as string });
-
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
+    await this._addImageAnnotation(file);
+    this._initAnnotation();
+    event.target.files = [];
   }
 
   public zoomIn(): void {
@@ -80,6 +69,26 @@ export class DetailsComponent implements OnInit {
   public zoomOut(): void {
     this.img.nativeElement.width = this.img.nativeElement.width / 1.1;
     this.img.nativeElement.height = this.img.nativeElement.height / 1.1;
+  }
+
+  private _addImageAnnotation(file: File): Promise<void> {
+    const item = { type: ANNOTATION_TYPES.IMAGE, data: null, offsetTop: 300, offsetLeft: 300 };
+    const reader = new FileReader();
+
+    return new Promise((resolve, reject) => {
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this._annotationsStore
+          .addAnnotation(this.documentId, { ...item, data: reader.result as string });
+        resolve();
+      };
+
+      reader.onerror = function (error) {
+        console.log('Error: ', error);
+        reject(error);
+      };
+    });
   }
 
   private async _getImgUrl(): Promise<string> {

@@ -15,14 +15,15 @@ export class AnnotationContainerComponent implements OnInit {
   @Output() onUpdateAnnotation = new EventEmitter<IAnnotation>();
   @Output() onRemoveAnnotation = new EventEmitter<number>();
 
-  public TYPES: ANNOTATION_TYPES;
+  public TYPES: any;
 
   constructor(private _annotationsStore: AnnotationsStoreService) {
     this.annotations = [];
-    this.TYPES = ANNOTATION_TYPES;
+    this.TYPES = null;
   }
 
   ngOnInit() {
+    this.TYPES = ANNOTATION_TYPES;
   }
 
   public updateAnnotation(annotation: IAnnotation, position: { offsetTop: number; offsetLeft: number }): void {

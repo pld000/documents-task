@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { AnnotationBase } from '../../base-components/annotation.base';
 
 @Component({
-  selector: 'app-annotation-image',
+  selector: 'annotation-image',
   templateUrl: './annotation-image.component.html',
   styleUrl: './annotation-image.component.scss'
 })
