@@ -58,7 +58,6 @@ export class DetailsComponent implements OnInit {
 
     await this._addImageAnnotation(file);
     this._initAnnotation();
-    event.target.files = [];
   }
 
   public zoomIn(): void {
