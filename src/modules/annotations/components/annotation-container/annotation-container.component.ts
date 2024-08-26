@@ -1,13 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IAnnotation } from '../../iterfaceses';
-import { AnnotationsStoreService } from '../../services';
 import { ANNOTATION_TYPES } from '../../enums';
 
 @Component({
   selector: 'annotation-container',
   templateUrl: './annotation-container.component.html',
   styleUrl: './annotation-container.component.scss',
-  providers: [AnnotationsStoreService]
 })
 export class AnnotationContainerComponent implements OnInit {
   @Input() annotations: IAnnotation[];
@@ -17,7 +15,7 @@ export class AnnotationContainerComponent implements OnInit {
 
   public TYPES: any;
 
-  constructor(private _annotationsStore: AnnotationsStoreService) {
+  constructor() {
     this.annotations = [];
     this.TYPES = null;
   }
