@@ -1,22 +1,22 @@
-<div>
-  <a [routerLink]="['..', 'overview']">
-    < Назад
-  </a>
+<div class="details-header">
+  <div class="header-left-col">
+    <a class="back-button" [routerLink]="['..', 'overview']">
+      <&nbsp;Назад
+    </a>
+
+    <input class="annotation-input"
+           placeholder="Введите текст и нажмите enter"
+           type="text" (keydown.enter)="addTextAnnotation($event)">
+    <input type="file" (change)="addImageAnnotation($event)">
+  </div>
+
+  <div class="zoom-wrap">
+    <div>Zoom</div>
+    <button (click)="zoomIn()">+</button>
+    <button (click)="zoomOut()">-</button>
+  </div>
 </div>
 
-<div>
-  <div>Zoom</div>
-  <button (click)="zoomIn()">+</button>
-  <button (click)="zoomOut()">-</button>
-</div>
-
-<div>
-  <input type="text" (keydown.enter)="addTextAnnotation($event)">
-</div>
-
-<div>
-  <input type="file" (change)="addImageAnnotation($event)">
-</div>
 
 <annotation-container
   [annotations]="annotations"
