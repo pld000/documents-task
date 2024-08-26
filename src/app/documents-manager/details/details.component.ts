@@ -60,6 +60,15 @@ export class DetailsComponent implements OnInit {
     this._initAnnotation();
   }
 
+  public save() {
+    const documentInfo = {
+      title: 'Document-' + this.documentId,
+      annotations: this._annotationsStore.getDocumentAnnotations(this.documentId)
+    };
+
+    console.log(documentInfo);
+  }
+
   public zoomIn(): void {
     this.img.nativeElement.width = this.img.nativeElement.width * 1.1;
     this.img.nativeElement.height = this.img.nativeElement.height * 1.1;

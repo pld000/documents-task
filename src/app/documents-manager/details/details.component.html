@@ -10,10 +10,12 @@
     <input type="file" (change)="addImageAnnotation($event)">
   </div>
 
-  <div class="zoom-wrap">
+  <div class="header-right-col">
     <div>Zoom</div>
-    <button (click)="zoomIn()">+</button>
-    <button (click)="zoomOut()">-</button>
+    <button class="zoom-action" (click)="zoomIn()">+</button>
+    <button class="zoom-action" (click)="zoomOut()">-</button>
+
+    <button class="save-action" (click)="save()">Сохранить</button>
   </div>
 </div>
 
